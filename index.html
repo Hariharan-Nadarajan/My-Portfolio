@@ -6,175 +6,25 @@
 <meta name="description" content="This is Portfolio of Hariharan, a Front-end Developer">
 <title>Hariharan N — Frontend Developer</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='10' y='22' font-family='Syne%2C Inter%2C sans-serif' font-size='16' font-weight='800' fill='%23ffffff' letter-spacing='-1'%3EH%3C/text%3E%3Ctext x='18' y='22' font-family='Syne%2C Inter%2C sans-serif' font-size='16' font-weight='800' fill='%23ff3b3b' letter-spacing='-1'%3EN%3C/text%3E%3Crect x='7' y='24' width='18' height='2' rx='1' fill='%23ff3b3b'/%3E%3C/svg%3E"/>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" as="font" crossorigin>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0a0a;
-  --panel:#111111;
-  --line:rgba(255,255,255,0.15);
-  --line2:rgba(255,255,255,0.15);
-  --t:#ffffff;
-  --t2:#a0a0a0;
-  --t3:#a8a7a7;
-  --red:#ff3b3b;
-  --green:#00e676;
-  --blue:#4fc3f7;
-  --mono:'JetBrains Mono',monospace;
-  --sans:'Inter',sans-serif;
-  --display:'Syne',sans-serif;
-}
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--t);font-family:var(--sans)}
-a{color:inherit;text-decoration:none}
+<link rel="stylesheet" href="./index.css">
 
-
-
-.root{position:fixed;inset:0;display:grid;grid-template-columns:42% 1fr;grid-template-rows:1fr}
-
-.left{
-  border-right:1px solid var(--line);
-  display:flex;flex-direction:column;
-  padding:44px 48px;
-  position:relative;overflow:hidden;
-}
-.left::before{
-  content:'';position:absolute;bottom:-80px;left:-80px;
-  width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,59,59,.12) 0%,transparent 70%);
-  pointer-events:none;
-}
-
-.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px}
-.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--green);text-transform:uppercase}
-.sdot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:breathe 2s ease-in-out infinite}
-@keyframes breathe{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,230,118,.5)}50%{opacity:.7;box-shadow:0 0 0 5px rgba(0,230,118,0)}}
-
-.tog{cursor: pointer;width:38px;height:20px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid var(--line2);position:relative;transition:.3s;flex-shrink:0}
-.tog::after{content:'';position:absolute;top:3px;left:3px;width:12px;height:12px;border-radius:50%;background:var(--red);transition:.3s}
-.tog.on::after{transform:translateX(18px)}
-
-.name-pre{font-family:var(--mono);font-size:11px;color:var(--t3);letter-spacing:.22em;text-transform:uppercase;margin-bottom:12px}
-.name{font-family:var(--display);font-size:clamp(2.6rem,4.2vw,4rem);font-weight:800;line-height:.9;letter-spacing:-.03em;color:var(--t);margin-bottom:22px}
-.name-last{color:var(--red);display:block}
-
-.role-line{height: 17px;font-family:var(--mono);font-size:13px;color:var(--blue);margin-bottom:20px;display:flex;align-items:center;gap:0}
-.caret{display:inline-block;width:2px;height:14px;background:var(--blue);vertical-align:middle;margin-left:2px;animation:blink .65s infinite}
-@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-
-.bio{font-size:15px;line-height:1.78;color:var(--t2);font-weight:400;margin-bottom:28px}
-.bio strong{color:var(--t);font-weight:600}
-
-.tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:auto}
-.tag{padding:5px 13px;border-radius:4px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;border:1px solid;font-weight:500}
-.tag-r{border-color:rgba(255,59,59,.4);color:var(--red);background:rgba(255,59,59,.06)}
-.tag-g{border-color:rgba(0,230,118,.3);color:var(--green);background:rgba(0,230,118,.05)}
-.tag-b{border-color:rgba(79,195,247,.3);color:var(--blue);background:rgba(79,195,247,.05)}
-.tag-w{border-color:rgba(255,255,255,.12);color:var(--t2);background:rgba(255,255,255,.03)}
-
-.left-footer{padding-top:10px;padding-bottom: 10px;padding-left: 32px;padding-right: 32px;display:flex;flex-direction:column;gap:8px;flex: 20%;align-items: flex-end;}
-.c-link{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t2);transition:all .2s;padding:4px 0;border-bottom:1px solid transparent}
-.c-link:hover{color:var(--t);border-bottom-color:var(--red)}
-.c-link svg{flex-shrink:0;opacity:.5}
-.c-link:hover svg{opacity:1}
-
-.right{display:flex;flex-direction:column;overflow:hidden}
-
-.stats-strip{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line);flex-shrink:0;flex: auto;}
-.stat{padding:18px 22px;text-align:center;border-right:1px solid var(--line)}
-.stat-n{font-family:var(--display);font-size:1.9rem;font-weight:800;color:var(--t);line-height:1;letter-spacing:-.04em}
-.stat-n.r{color:var(--red)}.stat-n.g{color:var(--green)}.stat-n.b{color:var(--blue)}
-.stat-l{font-family:var(--mono);font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
-.stat-sub{font-size:11px;color:var(--t3);margin-top:2px}
-
-.tabs{display:flex;border-bottom:1px solid var(--line);flex-shrink:0;margin-top: 20px;}
-.tab{cursor: pointer;padding:14px 20px;font-size:12px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--t3);border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px}
-.tab:hover{color:var(--t2)}
-.tab.active{color:var(--t);border-bottom-color:var(--red)}
-
-.panels{flex:1;overflow:hidden;position:relative;border-bottom:1px solid var(--line);animation:fadeUp .5s .1s both}
-.panel{position:absolute;inset:0;overflow-y:auto;padding:32px 40px;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none}
-.panel.active{opacity:1;transform:none;pointer-events:all}
-.panel::-webkit-scrollbar{width:3px}
-.panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-
-.sec-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--t3);margin-bottom:18px;display:flex;align-items:center;gap:10px}
-.sec-label::after{content:'';flex:1;height:1px;background:var(--line)}
-
-.exp-item{padding-bottom:20px;border-bottom:1px solid var(--line)}
-.exp-item:last-child{border-bottom:none;margin-top:20px}
-.exp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:5px}
-.exp-co{font-family:var(--display);font-size:19px;font-weight:700;color:var(--t);letter-spacing:-.02em}
-.exp-date{font-family:var(--mono);font-size:11px;color:var(--t3);flex-shrink:0;margin-top:3px}
-.exp-role{font-size:13px;color:var(--red);font-weight:600;letter-spacing:.02em;margin-bottom:14px}
-.exp-pts{list-style:none;display:flex;flex-direction:column;gap:9px}
-.exp-pts li{font-size:14px;line-height:1.65;color:var(--t2);padding-left:18px;position:relative}
-.exp-pts li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:1px;background:var(--red)}
-.exp-pts li strong{color:var(--t);font-weight:600}
-.badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:5px 12px;border-radius:4px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);font-size:12px;color:#fbbf24;font-weight:500}
-.light .badge{background:rgb(0 0 0 / 70%);}
-.skill-group{margin-bottom:26px}
-.skill-group-title{font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;font-family:var(--mono)}
-.skill-chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:6px;background:var(--panel);border:1px solid var(--line);font-size:13px;font-weight:500;color:var(--t2);transition:all .2s}
-.chip:hover{border-color:var(--line2);color:var(--t);transform:translateY(-1px)}
-.chip img,.chip svg{width:15px;height:15px;flex-shrink:0}
-
-.mindset-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
-.mind-card{padding:18px 20px;background:var(--panel);border:1px solid var(--line);border-radius:8px;transition:all .2s}
-.mind-card:hover{border-color:var(--line2);transform:translateY(-2px)}
-.mind-title{font-size:14px;font-weight:600;color:var(--t);margin-bottom:8px}
-.mind-body{font-size:13px;line-height:1.65;color:var(--t2)}
-
-.edge-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.edge-chip{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--panel);border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--t2);transition:all .18s}
-.edge-chip:hover{color:var(--t);border-color:rgba(79,195,247,.3)}
-.edge-chip::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0}
-
-.edu-item{padding:20px 22px;background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-bottom:10px;transition:all .2s;display:flex;gap:16px}
-.edu-item:hover{border-color:var(--line2)}
-.edu-icon{font-size:26px;flex-shrink:0;line-height:1;margin-top:2px}
-.edu-deg{font-size:15px;font-weight:600;color:var(--t);letter-spacing:-.01em;margin-bottom:4px}
-.edu-sch{font-size:13px;color:var(--t2);margin-bottom:6px}
-.edu-yr{font-family:var(--mono);font-size:11px;color:var(--t3);display:flex;align-items:center;gap:8px}
-.cgpa{padding:2px 8px;border-radius:3px;background:rgba(0,230,118,.06);border:1px solid rgba(0,230,118,.15);color:#86efac;font-size:11px}
-
-.now-box{padding:20px 22px;border-radius:8px;margin-top:18px;border:1px solid rgba(79,195,247,.2);background:linear-gradient(135deg,rgba(79,195,247,.05),transparent)}
-.now-title{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
-.now-items{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.now-item{font-size:13px;color:var(--t2);padding-left:16px;position:relative;line-height:1.5}
-.now-item::before{content:'→';position:absolute;left:0;color:var(--blue);font-size:11px;top:1px}
-
-html.light{
-  --bg:#f4f4f0;--panel:#eaeae6;--line:rgba(0,0,0,.1);--line2:rgba(0,0,0,.2);
-  --t:#0a0a0a;--t2:#555;--t3:#999;
-  --red:#d92b2b;--green:#1a9e52;--blue:#0277bd;
-}
-html.light .chip img[src*="github"]{filter:brightness(.2)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.left>*{animation:fadeUp .5s both}
-.top-bar{animation-delay:.04s}.name-pre{animation-delay:.08s}.name{animation-delay:.1s}
-.role-line{animation-delay:.14s}.bio{animation-delay:.17s}.tag-row{animation-delay:.2s}.left-footer{animation-delay:.1s}
-.stats-strip{animation:fadeUp .5s .22s both}.tabs{animation:fadeUp .5s .26s both}
-.footerConts{display: flex;flex-direction: row-reverse;}
-</style>
 </head>
 <body>
 
-<!-- <div id="dot"></div> -->
-<!-- <div id="ring"></div> -->
-
 <div class="root">
-  <!-- LEFT -->
   <div class="left">
-
     <div class="top-bar">
       <span class="status"><span class="sdot"></span>Ready to work Anywhere in India</span>
       <button class="tog" id="tog" aria-label="Toggle"></button>
     </div>
 
     <div class="name-pre">Frontend Developer · Chennai</div>
-    <h1 class="name">Hariharan<span class="name-last">Nadarajan.</span></h1>
+    <div class="abtUser">
+        <h1 class="name">Hariharan<span class="name-last">Nadarajan.</span></h1>
+        <div class="userProf">
+            <img width="120" height="169" src="./hariharan_n.webp" alt="User Photo">
+        </div>
+    </div>
 
     <div class="role-line"><span id="typed"></span><span class="caret"></span></div>
 
@@ -197,11 +47,11 @@ html.light .chip img[src*="github"]{filter:brightness(.2)}
           <div class="skill-group-title">Core</div>
           <div class="skill-chips">
             <div class="chip"><svg width="15" height="15" viewBox="0 0 24 24"><rect width="24" height="24" rx="2" fill="#f7df1e"/><path d="M6.5 17.5l1.7-1c.3.6.6.9 1.2.9.5 0 .9-.2.9-.9V11h2v6.5c0 1.9-1.1 2.7-2.7 2.7-1.4 0-2.3-.7-2.7-1.7zm6.5-.2l1.7-1c.4.7.9 1.1 1.8 1.1.8 0 1.2-.4 1.2-.9 0-.6-.5-.8-1.4-1.2l-.5-.2c-1.4-.6-2.3-1.3-2.3-2.9 0-1.4 1.1-2.5 2.8-2.5 1.2 0 2.1.4 2.7 1.5l-1.6 1.1c-.3-.6-.6-.8-1.1-.8s-.8.3-.8.7c0 .5.3.7 1.1 1l.5.2c1.7.7 2.6 1.4 2.6 3 0 1.7-1.3 2.6-3.1 2.6-1.7 0-2.9-.8-3.4-2.7z" fill="#000"/></svg>JavaScript</div>
-            <div class="chip"><svg width="15" height="15" viewBox="0 0 24 24"><rect width="24" height="24" rx="2" fill="#3178c6"/><path d="M13 15.5v1.8c.4.2.9.3 1.4.3.5 0 .9-.1 1.3-.3.3-.2.6-.4.8-.8.2-.3.3-.7.3-1.1 0-.5-.1-.9-.4-1.2-.3-.3-.8-.6-1.4-.9-.5-.2-.7-.3-.9-.5-.1-.1-.2-.3-.2-.5s.1-.4.2-.5.3-.2.6-.2c.2 0 .4.1.6.2.2.1.4.3.5.5l1.5-.9c-.3-.5-.6-.8-1-.1-.4-.3-.9-.4-1.5-.4-.5 0-.9.1-1.2.3-.4.2-.7.4-.9.8-.2.3-.3.7-.3 1.1 0 .5.1.9.4 1.2.3.3.7.6 1.3.8l.4.2c.4.2.7.4.8.5.1.1.2.3.2.5s-.1.4-.3.5c-.2.1-.4.2-.7.2-.6 0-1-.3-1.5-.8zM9 12H11v-1.5H5V12H7v6h2v-6z" fill="white"/></svg>TypeScript</div>
             <div class="chip"><svg width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1.1" fill="none"><ellipse cx="12" cy="12" rx="10" ry="3.8"/><ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(120 12 12)"/></g></svg>React</div>
             <div class="chip"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M9.931 12.645h4.138l-2.07-4.908m0-7.737L.68 3.982l1.726 14.771L12 24l9.596-5.242L23.32 3.982 11.999.0zm7.064 18.31h-2.717l-1.447-3.627H8.151l-1.447 3.627H4.015l8-18.31z" fill="#dd0031"/></svg>Angular</div>
             <div class="chip"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" fill="#e34f26"/></svg>HTML5</div>
             <div class="chip"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" fill="#1572b6"/></svg>CSS3</div>
+            <div class="chip"><svg width="15" height="15" viewBox="0 0 24 24"><rect width="24" height="24" rx="2" fill="#3178c6"/><path d="M13 15.5v1.8c.4.2.9.3 1.4.3.5 0 .9-.1 1.3-.3.3-.2.6-.4.8-.8.2-.3.3-.7.3-1.1 0-.5-.1-.9-.4-1.2-.3-.3-.8-.6-1.4-.9-.5-.2-.7-.3-.9-.5-.1-.1-.2-.3-.2-.5s.1-.4.2-.5.3-.2.6-.2c.2 0 .4.1.6.2.2.1.4.3.5.5l1.5-.9c-.3-.5-.6-.8-1-.1-.4-.3-.9-.4-1.5-.4-.5 0-.9.1-1.2.3-.4.2-.7.4-.9.8-.2.3-.3.7-.3 1.1 0 .5.1.9.4 1.2.3.3.7.6 1.3.8l.4.2c.4.2.7.4.8.5.1.1.2.3.2.5s-.1.4-.3.5c-.2.1-.4.2-.7.2-.6 0-1-.3-1.5-.8zM9 12H11v-1.5H5V12H7v6h2v-6z" fill="white"/></svg>TypeScript</div>
           </div>
         </div>
 
@@ -377,35 +227,7 @@ html.light .chip img[src*="github"]{filter:brightness(.2)}
       </div>
     </div>
   </div>
-
 </div>
-
-<script>
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById('panel-'+t.dataset.tab).classList.add('active');
-  });
-});
-
-const tog=document.getElementById('tog');
-tog.addEventListener('click',()=>{
-  document.documentElement.classList.toggle('light');
-  tog.classList.toggle('on');
-});
-
-const phrases=['Senior Frontend Developer | React | Angular | Responsive & Performance-Driven'];
-let pi=0,ci=0,del=false;
-const el=document.getElementById('typed');
-function type(){
-  const w=phrases[pi];
-  if(!del){el.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1500);return}}
-  else{el.textContent=w.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length}}
-  setTimeout(type,del?50:85);
-}
-type();
-</script>
+<script src="./index.js"></script>
 </body>
 </html>
