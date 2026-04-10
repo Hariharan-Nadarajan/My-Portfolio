@@ -145,6 +145,242 @@ html.light .chip img[src*="github"]{filter:brightness(.2)}
 .role-line{animation-delay:.14s}.bio{animation-delay:.17s}.tag-row{animation-delay:.2s}.left-footer{animation-delay:.1s}
 .stats-strip{animation:fadeUp .5s .22s both}.tabs{animation:fadeUp .5s .26s both}
 .footerConts{display: flex;flex-direction: row-reverse;}
+
+html{ overflow-x:hidden }
+body{ overflow-x:hidden }
+
+@media(max-width:768px){
+
+  /* Let page scroll vertically, never horizontally */
+  html,body{ overflow-x:hidden; overflow-y:auto; height:auto }
+
+  /* Un-fix the root so it flows normally */
+  .root{
+    position:static;
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    min-height:100vh;
+  }
+
+  /* ── LEFT column ── */
+  .left{
+    width:100%;
+    border-right:none;
+    border-bottom:1px solid var(--line);
+    padding:24px 20px 20px;
+    overflow:visible;       /* no hidden clipping that can cause reflow */
+  }
+  .left::before{ display:none }
+
+  .top-bar{ margin-bottom:20px }
+
+  /* status badge: shorten letter-spacing so it doesn't push width */
+  .status{ font-size:10px; letter-spacing:.06em }
+
+  /* Name block */
+  .abtUser{ gap:14px; align-items:center; margin-bottom:14px }
+  .name{
+    font-size:clamp(2.4rem,7vw,3.4rem);
+    margin-bottom:0;
+    flex:1;
+    min-width:0;          /* allow flex child to shrink */
+    word-break:break-word;
+  }
+  .name-last{ line-height: 1.5;text-align:left }
+  .userProf{ width:84px; height:84px; flex-shrink:0 }
+  .userProf img{ transform:translate(8px,13px) scale(1.2) }
+  .role-line{ margin-bottom:14px; font-size:12px }
+  .bio{ font-size:13.5px; margin-bottom:18px }
+
+  /* Tags wrap, never overflow */
+  .tag-row{ flex-wrap:wrap; margin-bottom:14px }
+
+  /* Skills panel inside .left — chips wrap, no X scroll */
+  #panel-skills{ margin-top:14px }
+  #panel-skills .skill-chips{ flex-wrap:wrap }
+  #panel-skills .skill-group{ margin-bottom:16px }
+
+  /* Footer: stack vertically */
+  .footerConts{ flex-direction:column; width:100% }
+
+  .left-footer{
+    order:1;
+    width:100%;
+    padding:14px 20px 10px;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .stats-strip{
+    order:2;
+    width:100%;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+    border-bottom:none;
+  }
+  .stat{ padding:14px 8px }
+  .stat-n{ font-size:1.6rem }
+
+  /* ── RIGHT column ── */
+  .right{ width:100%; overflow:visible }
+
+  /* Tabs: flex-wrap so they never scroll or overflow */
+  .tabs{ flex-wrap:wrap; overflow:visible; margin-top:0 }
+  .tab{ white-space:nowrap; padding:11px 14px; font-size:11px }
+
+  /* Panels: in-flow, show/hide with display */
+  .panels{
+    position:static;
+    overflow:visible;
+    flex:none;
+    border-bottom:1px solid var(--line);
+  }
+  .panel{
+    position:static;
+    display:none;
+    opacity:1;
+    transform:none;
+    pointer-events:all;
+    padding:22px 20px;
+    overflow:visible;
+  }
+  .panel.active{ display:block }
+
+  /* Grids: 2-col is fine at 768, will collapse below */
+  .mindset-grid{ grid-template-columns:1fr 1fr }
+  .edge-row{ grid-template-columns:1fr 1fr }
+  .now-items{ grid-template-columns:1fr 1fr }
+}
+
+/* ── 480px ── */
+@media(max-width:480px){
+  .left{ padding:20px 16px 16px }
+
+  .name{ font-size:clamp(2rem,8.5vw,2.8rem) }
+  .userProf{ width:72px; height:72px }
+  .userProf img{ transform:translate(7px,11px) scale(1.2) }
+
+  .bio{ font-size:13px }
+  .tag{ font-size:10px; padding:4px 9px }
+
+  .stat-n{ font-size:1.35rem }
+  .stat-l{ font-size:9px }
+  .stat-sub{ display:none }
+
+  .tab{ padding:10px 11px; font-size:10.5px }
+  .panel{ padding:18px 16px }
+
+  /* Collapse all 2-col grids to 1 col */
+  .mindset-grid{ grid-template-columns:1fr }
+  .edge-row{ grid-template-columns:1fr }
+  .now-items{ grid-template-columns:1fr }
+
+  /* Exp */
+  .exp-head{ flex-direction:column; gap:3px }
+  .exp-co{ font-size:16px }
+  .exp-pts li{ font-size:13px }
+
+  /* Chips: wrap, never nowrap */
+  .skill-chips{ flex-wrap:wrap }
+  .chip{ font-size:12px; padding:7px 11px }
+}
+
+/* ── 375px ── */
+@media(max-width:375px){
+  .left{ padding:16px 14px 14px }
+
+  .top-bar{ flex-wrap:wrap; gap:6px }
+  .status{ font-size:9.5px; letter-spacing:.04em }
+
+  .name{ font-size:clamp(1.85rem,9vw,2.4rem) }
+  .userProf{ width:62px; height:62px }
+
+  .bio{ font-size:12.5px; line-height:1.68 }
+
+  .stat-n{ font-size:1.2rem }
+  .stat-l{ font-size:8.5px; letter-spacing:.05em }
+
+  .tabs{ gap:0 }
+  .tab{ padding:9px 9px; font-size:10px; letter-spacing:.06em }
+
+  .panel{ padding:14px }
+
+  .exp-co{ font-size:14.5px }
+  .exp-role{ font-size:12px }
+  .exp-date{ font-size:10.5px }
+  .exp-pts li{ font-size:12.5px }
+
+  .mind-card{ padding:14px }
+  .mind-title{ font-size:13px }
+  .mind-body{ font-size:12px }
+
+  .chip{ font-size:11.5px; padding:6px 9px }
+  .chip img,.chip svg{ width:13px; height:13px }
+
+  .edge-chip{ font-size:12px; padding:8px 10px }
+
+  .edu-item{ padding:13px 14px; gap:10px }
+  .edu-deg{ font-size:13.5px }
+  .edu-sch{ font-size:12px }
+}
+
+/* ── 320px ── */
+@media(max-width:320px){
+  .left{ padding:14px 12px 12px }
+
+  .status{ font-size:9px; letter-spacing:.03em }
+  .tog{ width:30px; height:16px }
+  .tog::after{ width:9px; height:9px }
+  .tog.on::after{ transform:translateX(14px) }
+
+  .name-pre{ font-size:9px; letter-spacing:.12em }
+  .abtUser{ gap:8px }
+  .name{ font-size:1.75rem }
+  .userProf{ width:54px; height:54px }
+  .userProf img{ transform:translate(5px,8px) scale(1.2) }
+
+  .role-line{ font-size:10.5px }
+  .bio{ font-size:12px; line-height:1.65 }
+  .tag{ font-size:9px; padding:3px 7px }
+
+  .stat{ padding:7px 2px }
+  .stat-n{ font-size:1.05rem }
+  .stat-l{ font-size:8px }
+
+  .tab{ padding:8px 7px; font-size:9.5px }
+  .panel{ padding:12px }
+
+  .sec-label{ font-size:9px; letter-spacing:.14em }
+
+  .exp-co{ font-size:13.5px }
+  .exp-role{ font-size:11.5px }
+  .exp-date{ font-size:10px }
+  .exp-pts li{ font-size:12px; padding-left:13px }
+
+  .mind-card{ padding:12px }
+  .mind-title{ font-size:12.5px }
+  .mind-body{ font-size:11.5px }
+
+  .chip{ font-size:11px; padding:6px 8px }
+  .chip img,.chip svg{ width:12px; height:12px }
+
+  .edge-chip{ font-size:11px; padding:7px 9px }
+
+  .edu-item{ padding:11px; gap:8px }
+  .edu-icon{ font-size:20px }
+  .edu-deg{ font-size:12.5px }
+  .edu-sch{ font-size:11.5px }
+  .edu-yr{ font-size:10px }
+  .cgpa{ font-size:9.5px; padding:1px 5px }
+
+  .now-box{ padding:11px }
+  .now-title{ font-size:9px }
+  .now-item{ font-size:11.5px }
+  .badge{ font-size:10.5px; padding:4px 9px }
+}
+
 .abtUser{
     display: flex;
     gap: 10px;
